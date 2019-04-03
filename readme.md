@@ -40,13 +40,13 @@ my.gateway.routes.httpbin.predicate=foo
 > modify properties to change predicate 
 
 ```
-➜  spring-cloud-gateway curl -X PUT "http://127.0.0.1:9999/properties/my.gateway.routes.httpbin.predicate/bar"   
+➜  curl -X PUT "http://127.0.0.1:9999/properties/my.gateway.routes.httpbin.predicate/bar"   
 put properties , my.gateway.routes.httpbin.predicate -> bar%                                            
 ```
 
 > refresh gateway
 ```
-➜  spring-cloud-gateway curl -v -X POST   http://127.0.0.1:9999/actuator/gateway/refresh
+➜  curl -v -X POST   http://127.0.0.1:9999/actuator/gateway/refresh
 *   Trying 127.0.0.1...
 * TCP_NODELAY set
 * Connected to 127.0.0.1 (127.0.0.1) port 9999 (#0)
