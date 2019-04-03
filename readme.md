@@ -21,6 +21,11 @@ my.gateway.routes.httpbin.predicate=foo
 
 
 ```
+➜ curl http://127.0.0.1:9999/gatewayRouteProperties
+GatewayRouteProperties{routes={"httpbin":{"predicate":"foo","uri":"http://httpbin.org"}}}%  
+```
+
+```
 ➜ curl  http://127.0.0.1:9999/foo/get
 {
   "args": {}, 
@@ -43,6 +48,12 @@ my.gateway.routes.httpbin.predicate=foo
 ➜  curl -X PUT "http://127.0.0.1:9999/properties/my.gateway.routes.httpbin.predicate/bar"   
 put properties , my.gateway.routes.httpbin.predicate -> bar%                                            
 ```
+
+```
+➜ curl http://127.0.0.1:9999/gatewayRouteProperties
+GatewayRouteProperties{routes={"httpbin":{"predicate":"bar","uri":"http://httpbin.org"}}}% 
+```
+
 
 > refresh gateway
 ```
