@@ -2,6 +2,23 @@
 
 > This project is for illustration the issue (https://github.com/spring-cloud/spring-cloud-gateway/issues/993)
 
+### initial properties
+```
+spring.application.name=gateway-example
+server.port=9999
+
+logging.level.root=info
+
+management.endpoints.web.exposure.include = *
+
+my.gateway.routes.httpbin.uri=http://httpbin.org
+my.gateway.routes.httpbin.predicate=foo
+
+```
+
+
+> test route 
+
 
 ```
 ➜ curl  http://127.0.0.1:9999/foo/get
@@ -20,13 +37,14 @@
 }
 ```
 
-### modify properties
+> modify properties to change predicate 
+
 ```
 ➜  spring-cloud-gateway curl -X PUT "http://127.0.0.1:9999/properties/my.gateway.routes.httpbin.predicate/bar"   
 put properties , my.gateway.routes.httpbin.predicate -> bar%                                            
 ```
 
-### refresh gateway
+> refresh gateway
 ```
 ➜  spring-cloud-gateway curl -v -X POST   http://127.0.0.1:9999/actuator/gateway/refresh
 *   Trying 127.0.0.1...
@@ -43,7 +61,7 @@ put properties , my.gateway.routes.httpbin.predicate -> bar%
 * Connection #0 to host 127.0.0.1 left intact
 ```
 
-### not refreshed
+> not refreshed
 ```
 ➜ curl -I  http://127.0.0.1:9999/bar/get
 HTTP/1.1 404 Not Found
